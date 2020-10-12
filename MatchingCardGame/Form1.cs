@@ -21,6 +21,22 @@ namespace MatchingCardGame
         public Form1()
         {
             InitializeComponent();
+            AssignIconsToSquares();
+        }
+
+        private void AssignIconsToSquares()
+        {
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                Label iconLabel = control as Label;
+                if (iconLabel != null)
+                {
+                    int randomNumber = random.Next(icons.Count);
+                    iconLabel.Text = icons[randomNumber];
+
+                    icons.RemoveAt(randomNumber);
+                }
+            }
         }
     }
 }
