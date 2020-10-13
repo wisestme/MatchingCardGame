@@ -65,6 +65,14 @@ namespace MatchingCardGame
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
 
+                if (firstClicked.Text == secondClicked.Text)
+                {
+                    firstClicked = null;
+                    secondClicked = null;
+
+                    return;
+                }
+
                 timer1.Start();
             }
         }
