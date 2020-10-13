@@ -41,6 +41,7 @@ namespace MatchingCardGame
                     icons.RemoveAt(randomNumber);
                 }
             }
+            
         }
 
         private void Label_Click(object sender, EventArgs e)
@@ -65,6 +66,8 @@ namespace MatchingCardGame
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
 
+                checkForWinner();
+
                 if (firstClicked.Text == secondClicked.Text)
                 {
                     firstClicked = null;
@@ -75,6 +78,7 @@ namespace MatchingCardGame
 
                 timer1.Start();
             }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -85,5 +89,23 @@ namespace MatchingCardGame
             firstClicked = null;
             secondClicked = null;
         }
+
+        private void checkForWinner()
+        {
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                Label iconLabel = control as Label;
+                if(iconLabel != null)
+                {
+                    if (iconLabel.ForeColor == iconLabel.BackColor)
+                        return;
+                }
+            }
+
+            MessageBox.Show("Congratulations... You've matched all icons");
+            Close();
+        }
+
+        
     }
 }
