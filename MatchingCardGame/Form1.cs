@@ -12,6 +12,9 @@ namespace MatchingCardGame
 {
     public partial class Form1 : Form
     {
+        Label firstClicked = null;
+        Label secondClicked = null;
+
         Random random = new Random();
 
         List<string> icons = new List<string>()
@@ -47,7 +50,15 @@ namespace MatchingCardGame
             {
                 if (clickedLabel.ForeColor == Color.Black)
                     return;
-                clickedLabel.ForeColor = Color.Black;
+                //clickedLabel.ForeColor = Color.Black;
+
+                if (firstClicked == null)
+                {
+                    firstClicked = clickedLabel;
+                    firstClicked.ForeColor = Color.Black;
+
+                    return;
+                }
             }
         }
     }
